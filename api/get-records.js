@@ -1,10 +1,10 @@
-import axios from "axios";
-import { getRecords } from "../controller/controllerZohoData.js"; 
+import { fetchAccessToken, getRecords } from "../controller/controllerZohoData.js"; 
 
 export default async function handler(req, res) {
   try {
 
-    const { accessToken, reportName, criteria } = req.query; 
+    const { reportName, criteria } = req.query; 
+    const accessToken = await fetchAccessToken();
 
     if (!accessToken || !reportName) {
       return res
