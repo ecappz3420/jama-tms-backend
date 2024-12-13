@@ -1,5 +1,8 @@
 import express from "express";
-import { fetchAccessToken, getRecords } from "../controller/controllerZohoData.js";
+import {
+  fetchAccessToken,
+  getRecords,
+} from "../controller/controllerZohoData.js";
 
 const router = express.Router();
 router.get("/get-records", async (req, res) => {
@@ -19,10 +22,20 @@ router.get("/get-records", async (req, res) => {
       });
       return res.status(200).json({ records });
     } catch (error) {
-      res.status(500).json({ error: "Error fetching records" });
+      return res.status(500).json({ error: "Error fetching records" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Error Fetching access token" });
+    return res.status(500).json({ error: "Error Fetching access token" });
+  }
+});
+
+router.get("/fetch-token", async (req, res) => {
+  try {
+    const accessToken = await fetchAccessToken();
+    return res.status(200).json({ access_token: accessToken });
+  } catch (error) {
+    console.error("Error fetching access token:", error);
+    return res.status(500).json({ error: "Error fetching access token" });
   }
 });
 
