@@ -29,13 +29,13 @@ export const getRecords = async ({ reportName, criteria, accessToken }) => {
       {
         headers: {
           Authorization: `Zoho-oauthtoken ${accessToken}`,
-          Accept: 'application/json'
+          Accept: "application/json",
         },
       }
     );
     return response.data;
   } catch (error) {
-    console.log("Error Fetching Records:",error);
+    console.log("Error Fetching Records:", error);
     throw new Error("Unable to fetch records");
   }
 };
