@@ -6,11 +6,11 @@ export default async function handler(req, res) {
     const { reportName, criteria } = req.query; 
     const accessToken = await fetchAccessToken();
 
-    if (!accessToken || !reportName) {
+    if (!reportName) {
       return res
         .status(400)
         .json({
-          error: "Missing required parameters: accessToken or reportName",
+          error: "Missing required parameters: reportName",
         });
     }
 
