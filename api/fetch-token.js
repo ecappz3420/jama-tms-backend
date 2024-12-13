@@ -1,4 +1,4 @@
-import { fetchAccessToken } from '../backend/controller/controllerZohoData.js';
+import { fetchAccessToken } from '../controller/controllerZohoData.js';
 
 export default async function handler(req, res) {
   try {
